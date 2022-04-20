@@ -9,6 +9,7 @@
 
 
 // steps
+"THIS IS NOT OPTIMIED SOLUTON"
   apply inorder traversal
   take a element and go with that element 
   if element is more than the vector size return the false 
@@ -43,5 +44,46 @@ public:
             return false;
         }
         return true;
+    }
+};
+
+
+
+
+
+
+"WE CAN SOLVE THIS  QUESTION USING STACK USING ORDER OF H SIZE (here H is height of tree) :)
+  
+  
+  link to access this solution how to solve using the stack
+  https://leetcode.com/problems/binary-search-tree-iterator/discuss/1430547/C%2B%2B-Simple-Solution-using-Stack-O(h)-Time-Complexity-(-with-Diagrammatic-Explanation-)
+
+
+
+
+class BSTIterator {
+public:
+    stack<TreeNode*>s;
+    void parital_inorder(TreeNode *root)
+    {
+       if(root!=NULL)
+       {
+           s.push(root);
+           parital_inorder(root->left);
+       }
+    }
+    BSTIterator(TreeNode* root) {
+        parital_inorder(root);
+    }
+    
+    int next() {
+        TreeNode* x=s.top();
+        s.pop();
+        parital_inorder(x->right);
+        return x->val;
+    }
+    
+    bool hasNext() {
+        return !s.size()==0;
     }
 };
