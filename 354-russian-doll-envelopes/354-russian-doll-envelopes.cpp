@@ -1,32 +1,34 @@
 class Solution {
 public:
-    int maxEnvelopes(vector<vector<int>>& envelopes) {
-        auto comp = [](const vector<int>& e1, const vector<int>& e2){
-            if(e1[0] == e2[0])
-                return e1[1] > e2[1];
-            else
-                return e1[0] < e2[0];
-        };
-        sort(envelopes.begin(), envelopes.end(), comp);
-        int len = envelopes.size();
-        vector dp(len, 0);
-        for(int i = 0; i < len; i++){
-            dp[i] = envelopes[i][1];
-        }
-        vector<int>vec;
-        vec.push_back(dp[0]);
-        for(int i=1;i<dp.size();i++)
+    static bool comp(const vector<int>&first,const vector<int>&second)
+    {
+       if(first[0]==second[0])
+       {
+           return first[1]>second[1];
+       }
+        return first[0]<second[0];
+    }
+    int maxEnvelopes(vector<vector<int>>& nums) {
+        sort(nums.begin(),nums.end(),comp);
+        vector<int>first;
+        for(int i=0;i<nums.size();i++)
         {
-            if(vec[vec.size()-1]<dp[i])
+            first.push_back(nums[i][1]);
+        }
+        vector<int>second;
+        second.push_back(first[0]);
+        for(int i=1;i<first.size();i++)
+        {
+            if(second[second.size()-1]<first[i])
             {
-                vec.push_back(dp[i]);
+                second.push_back(first[i]);
             }
-            else
+               else
             {
-                auto it=lower_bound(vec.begin(),vec.end(),dp[i]);
-                *it=dp[i];
+                auto it=lower_bound(second.begin(),second.end(),first[i]);
+                *it=first[i];
             }
         }
-        return vec.size();
+        return second.size();
     }
 };
