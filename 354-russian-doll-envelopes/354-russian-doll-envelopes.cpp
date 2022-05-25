@@ -1,6 +1,6 @@
 class Solution {
 public:
-    static bool comp(vector<int>&first,vector<int>&second)
+    static bool comp(const vector<int>&first,const vector<int>&second)
     {
         if(first[0]==second[0])
         {
