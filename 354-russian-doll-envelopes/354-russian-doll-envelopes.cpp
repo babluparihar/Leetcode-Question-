@@ -1,20 +1,22 @@
 class Solution {
 public:
-    static bool comp(const vector<int>&first,const vector<int>&second)
+    static bool comp(vector<int>&first,vector<int>&second)
     {
-       if(first[0]==second[0])
-       {
-           return first[1]>second[1];
-       }
+        if(first[0]==second[0])
+        {
+            return first[1]>second[1];
+        }
         return first[0]<second[0];
     }
-    int maxEnvelopes(vector<vector<int>>& nums) {
-        sort(nums.begin(),nums.end(),comp);
+    int maxEnvelopes(vector<vector<int>>& vec) {
+        // just need to sort and then just need to find the longest increasing subsequence
+        sort(vec.begin(),vec.end(),comp);
         vector<int>first;
-        for(int i=0;i<nums.size();i++)
+        for(auto i:vec)
         {
-            first.push_back(nums[i][1]);
+            first.push_back(i[1]);
         }
+        // now just find the lis of the give element
         vector<int>second;
         second.push_back(first[0]);
         for(int i=1;i<first.size();i++)
@@ -23,7 +25,7 @@ public:
             {
                 second.push_back(first[i]);
             }
-               else
+            else
             {
                 auto it=lower_bound(second.begin(),second.end(),first[i]);
                 *it=first[i];
