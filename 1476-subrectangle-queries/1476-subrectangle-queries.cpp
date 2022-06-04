@@ -1,5 +1,8 @@
 class SubrectangleQueries {
 public:
+    // accepted in the brute force approach
+    // this should not be solved in this manner 
+    
     vector<vector<int>>dp;
     SubrectangleQueries(vector<vector<int>>& rectangle) {
         for(auto i:rectangle)
