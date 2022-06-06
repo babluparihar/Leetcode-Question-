@@ -1,7 +1,7 @@
 class Solution {
 public:
     vector<long long>v;
-     int fun(vector<long long>c,int a)
+     int fun(vector<long long>&c,int a)
     {
         if(a==0)
         {
