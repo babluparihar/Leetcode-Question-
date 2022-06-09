@@ -13,8 +13,8 @@ public:
             return dp[i][j];
         }
         int len=0;
-        int curr_max=0;
-        int ans=0;
+        int curr_max=INT_MIN;
+        int ans=INT_MIN;
         // this should not be greater than that count
         for(int k=i;k<=j and len<count;k++,len++)
         {
