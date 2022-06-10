@@ -3,7 +3,7 @@ public:
     int count=0;
     int n=0;
     int d=0;
-    unordered_map<int,int>price;
+   map<int,int>price;
     Cashier(int nn, int discount, vector<int>& products, vector<int>& prices) {
         for(int i=0;i<products.size();i++)
         {
