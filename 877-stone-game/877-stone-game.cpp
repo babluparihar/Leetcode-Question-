@@ -14,7 +14,7 @@ public:
         }
         // taking from the last
         int a=piles[end]+max(solve(piles,start,end-2),solve(piles,start+1,end-1));
-        int b =piles[start]+max(solve(piles,start+2,end),solve(piles,start+1,end-1));
+        int b=piles[start]+max(solve(piles,start+2,end),solve(piles,start+1,end-1));
         return dp[start][end]=max(a,b);
     }
     bool stoneGame(vector<int>& piles) {
