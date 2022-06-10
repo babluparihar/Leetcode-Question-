@@ -21,7 +21,7 @@ public:
         return dp[i][j]=matrix[i][j]+min({a,b,c});
     }
     int minFallingPathSum(vector<vector<int>>& matrix) {
-        dp.resize(matrix.size()+1,vector<int>(matrix[0].size()+1,INT_MAX));
+        dp.resize(matrix.size(),vector<int>(matrix[0].size(),INT_MAX));
         int ans=INT_MAX;
         for(int i=0;i<matrix[0].size();i++)
         {
