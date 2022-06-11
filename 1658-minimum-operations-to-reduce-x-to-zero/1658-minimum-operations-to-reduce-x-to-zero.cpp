@@ -26,6 +26,7 @@ public:
     //     return dp[start][end]=min(a,b);
     // }
     int minOperations(vector<int>& nums, int x) {
+        // with dp giving memory limit exceed reason 1e5 element 
         int n=nums.size();
         int s=accumulate(nums.begin(),nums.end(),0);
         if(s<x)
