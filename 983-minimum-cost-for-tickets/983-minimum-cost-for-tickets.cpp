@@ -16,16 +16,15 @@ public:
         // for the  first day
         int a=cost[0]+solve(days,cost,ind+1);
         
-        // go for the week
         int day=days[ind];
         day+=7;
         int i;
-        for( i=ind;i<days.size() and days[i]<day; i++);
+        for( i=ind;i<days.size() and days[i]<day; i++);    // escaping for the 7 days
         int b=cost[1]+solve(days,cost,i);
         
         // now go for the month
         int month=days[ind]+30;
-        for( i=ind;i<days.size() and days[i]<month;i++);
+        for( i=ind;i<days.size() and days[i]<month;i++);  // escaping for the 30 days
         int c=cost[2]+solve(days,cost,i);
         
         return dp[ind]=min({a,b,c});
