@@ -1,6 +1,7 @@
 class Solution {
 public:
-    // how to change this code to dp
+    // how to get make two choice on recusion
+    // changing recursion to dp
     vector<vector<int>>dp;
     int solve(vector<int>&nums,int ind,bool b_s)
     {
