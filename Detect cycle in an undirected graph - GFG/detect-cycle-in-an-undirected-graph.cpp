@@ -6,37 +6,43 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
-    bool helper(vector<int>adj[],int child,int parent,vector<bool>vis)
+    bool helper(vector<int>vis,vector<int>adj[],int node)
     {
-        vis[child]=true;
-        for(auto c:adj[child])
+        if(vis[node]==2)
         {
-            if(vis[c]==false)
+            return true;
+        }
+        vis[node]=1;
+        for(auto child:adj[node])
+        {
+            if(vis[child]==1)
             {
-                 if(helper(adj,c,child,vis)==true)
-                 {
-                     return true;
-                 }
+                vis[child]=2;
             }
-            else if(c!=parent)
+            else
+            {
+                if(helper(vis,adj,child)==true)
                 {
                     return true;
                 }
+            }
         }
         return false;
     }
     bool isCycle(int V, vector<int> adj[]) {
-        // Code here
-        vector<bool>vis(V,false);
+        vector<int>vis(V+1,false);
+        // go for all the nodes and check
         for(int i=0;i<V;i++)
         {
-            if(vis[i]==false)
+            vis[i]=1;
+            for(auto child:adj[i])
             {
-                if(helper(adj,i,-1,vis)==true)
+                if(helper(vis,adj,child)==true)
                 {
                     return true;
                 }
             }
+            vis[i]=0;
         }
         return false;
     }
