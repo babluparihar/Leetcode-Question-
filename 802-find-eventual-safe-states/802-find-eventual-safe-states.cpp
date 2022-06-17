@@ -4,21 +4,23 @@ public:
     
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
         // every node if any outgoing then that shoul go to the terminal node
+        
+        // performed by using the reversing the graph
         int n=graph.size();
         vector<vector<int>>adj(n);
-        vector<int>od(n,0);
+        vector<int>id(n,0);
         for(int i=0;i<graph.size();i++)
         {
             for(auto j:graph[i])
             {
                 adj[j].push_back(i);
-                od[i]++;
+                id[i]++;
             }
         }
         queue<int>q;
-        for(int i=0;i<od.size();i++)
+        for(int i=0;i<id.size();i++)
         {
-            if(od[i]==0)
+            if(id[i]==0)
             {
                 q.push(i);
             }
@@ -31,8 +33,8 @@ public:
             ans.push_back(t);
             for(auto i:adj[t])
             {
-                od[i]--;
-                if(od[i]==0)
+                id[i]--;
+                if(id[i]==0)
                 {
                     q.push(i);
                 }
