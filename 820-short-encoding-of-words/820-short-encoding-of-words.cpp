@@ -6,8 +6,8 @@ public:
     }
     int minimumLengthEncoding(vector<string>& words) {
         int ans=0;
-        unordered_map<string,int>m;
-        sort(words.begin(),words.end(),comp);
+        map<string,int>m;
+        sort(words.begin(),words.end(),comp);    // sorting to get the big length element first an
         for(int i=0;i<words.size();i++)
         {
             string t=words[i];
