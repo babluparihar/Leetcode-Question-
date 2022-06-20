@@ -65,7 +65,7 @@ public:
         int minimumLengthEncoding(vector<string>& words) {
             trie *root=new trie();
             int ans=0;
-            sort(words.begin(),words.end(),[&](string a,string b){return a.size()>b.size();});
+            sort(words.begin(),words.end(),[](const string &a,const string &b){return a.size()>b.size();});
             for(int i=0;i<words.size();i++)
             {
                 string s=words[i];
