@@ -10,8 +10,8 @@ public:
                 q.push(diff);
                 bricks-=diff;
                 if(bricks<0)
-                {
-                    if(ladders<=0)
+                { 
+                    if(ladders<=0)      // mean you dont have ladders too so
                     {
                         return i-1;
                     }
