@@ -4,7 +4,7 @@ public:
         sort(arr.begin(),arr.end());
         unordered_map<int,int>m;
         int z=count(arr.begin(),arr.end(),0);
-        if(z%2!=0)
+        if(z%2!=0)   // because z canit be mapped with other than it self
         {
             return false;
         }
