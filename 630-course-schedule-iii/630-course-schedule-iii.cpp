@@ -1,23 +1,30 @@
 class Solution {
 public:
-    static bool comp(const vector<int>&a,const vector<int>&b)
-    {
-        return a[1]<b[1];
-    }
     int scheduleCourse(vector<vector<int>>& courses) {
-        sort(courses.begin(),courses.end(),comp);
-        priority_queue<int>q;
-        int values=0;
-        for(int i=0;i<courses.size();i++)
+        int ans=0;
+        priority_queue< pair<int,int> , vector<pair<int,int>> , greater<pair<int,int>> >q;
+        for(auto i:courses)
         {
-            values+=courses[i][0];
-            q.push(courses[i][0]);
-            if(values>courses[i][1])
-            {
-                values-=q.top();
-                q.pop();
-            }
+            int x=i[1];
+            int y=i[0];
+            q.push({x,y});
         }
-        return q.size();
+        int course_end=0;
+        int final_ans=0;
+        priority_queue<int>pq;
+        while(!q.empty())
+        {
+            course_end+=q.top().second;
+            pq.push(q.top().second);
+            final_ans++;
+            if(course_end>q.top().first)
+            {
+                final_ans--;
+                course_end-=pq.top();
+                pq.pop();
+            }
+            q.pop();
+        }
+        return final_ans;
     }
 };
