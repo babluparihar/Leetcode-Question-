@@ -13,8 +13,9 @@ public:
         }
         for(auto &l:adj)
         {
-            // sort(adj[i].begin(),adj[i].end(),[&](const int &a,const int &b){return scores[a]>scores[b];});
-             partial_sort(begin(l), begin(l) + min((int)l.size(), 3), end(l), [&](int i, int j){ return scores[i] > scores[j]; });
+            sort(l.begin(),l.end(),[&](const int &a,const int &b){return scores[a]>scores[b];});
+            // without partial sort giving time limit exceeded so sorting the whole array we ar
+             // partial_sort(begin(l), begin(l) + min((int)l.size(), 3), end(l), [&](int i, int j){ return scores[i] > scores[j]; });
         l.resize(min((int)l.size(), 3));
         }
         int res=-1;
