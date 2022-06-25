@@ -5,6 +5,20 @@ public:
         // firs set
         // two pointer
         
+        //using set
+        set<int>s;
+        for(auto i:nums)
+        {
+            s.insert(i);
+        }
+        auto it=s.begin();
+        for(int i=0;i<s.size();i++)
+        {
+            nums[i]=*it;
+            it++;
+        }
+        return s.size();
+        
         // solving using two pointer
         int i=0;
         int j=0;
