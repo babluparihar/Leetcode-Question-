@@ -2,11 +2,6 @@ class Solution {
 public:
     string findLongestWord(string s, vector<string>& ele) {
         vector<string>ans;
-        unordered_map<char,int>m;
-        for(int i=0;i<s.size();i++)
-        {
-            m[s[i]]++;
-        }
         for(int ii=0;ii<ele.size();ii++)
         {
             string temp=ele[ii];
