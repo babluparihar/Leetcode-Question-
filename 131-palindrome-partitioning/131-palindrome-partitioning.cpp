@@ -10,7 +10,7 @@ public:
         if(s[i]==s[j]){return dp[i][j]=pal(s,i+1,j-1);}
         else{return dp[i][j]=false;}
     }
-    void solve(int i,vector<string>temp)
+    void solve(int i,vector<string>&temp)
     {
         if(i>=s.size())
         {
@@ -32,7 +32,8 @@ public:
     vector<vector<string>> partition(string s) {
         dp.resize(s.size(),vector<int>(s.size(),-1));
         this->s=s;
-        solve(0,{});
+        vector<string>temp;
+        solve(0,temp);
         return ans;
     }
 };
