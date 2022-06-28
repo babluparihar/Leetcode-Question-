@@ -1,16 +1,30 @@
 class Solution {
 public:
     int minDeletions(string s) {
-        unordered_map<char,int>m;
+        vector<int>vec(26,0);
         for(auto i:s)
         {
-            m[i]++;
+            vec[i-'a']++;
         }
         priority_queue<pair<int,char>>q;
-        for(auto i:m)
+        for(int i=0;i<26;i++)
         {
-            q.push({i.second,i.first});
+            q.push({vec[i],i+'a'});
         }
+        
+        // brute force approach 
+        
+        
+        // unordered_map<char,int>m;
+        // for(auto i:s)
+        // {
+        //     m[i]++;
+        // }
+        // priority_queue<pair<int,char>>q;
+        // for(auto i:m)
+        // {
+        //     q.push({i.second,i.first});
+        // }
         int mx=q.top().first;
         q.pop();
         int ans=0;
