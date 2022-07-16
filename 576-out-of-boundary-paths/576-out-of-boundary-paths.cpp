@@ -2,6 +2,7 @@ class Solution {
 public:
     long long int mod=1e9+7;
     vector<vector<vector<int>>>dp;
+    // we have to memoized three things because three things are chaging here :)
     int fun(int m,int n,int mm,int r,int c)
     {
         // reached at the answer
