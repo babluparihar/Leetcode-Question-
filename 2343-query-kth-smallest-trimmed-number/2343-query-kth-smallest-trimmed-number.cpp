@@ -2,6 +2,8 @@ class Solution {
 public:
     vector<int> smallestTrimmedNumbers(vector<string>& nums, vector<vector<int>>& queries) {
         // using brute force 
+        // see the previous example 
+        // pointh here is tht if we store every string than that will create the extra space and give as TLE
         vector<int>ans;
         for(auto i:queries)
         {
