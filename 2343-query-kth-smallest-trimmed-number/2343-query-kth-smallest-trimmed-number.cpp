@@ -7,16 +7,13 @@ public:
         vector<int>ans;
         for(auto i:queries)
         {
-            int k=i[0];
-            int len=i[1];
-            int start=nums[0].size()-len;
             vector<pair<string,int>>q;
-            for(int i=0;i<nums.size();i++)
+            for(int j=0;j<nums.size();j++)
             {
-                q.push_back({nums[i].substr(start,len),i});
+                q.push_back({nums[j].substr(nums[0].size()-i[1],i[1]),j});
             }
             sort(q.begin(),q.end());
-            ans.push_back(q[k-1].second);
+            ans.push_back(q[i[0]-1].second);
         }
         return ans;
     }
