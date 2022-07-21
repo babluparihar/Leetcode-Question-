@@ -33,6 +33,7 @@ public:
         return len;
     }
     ListNode* reverseBetween(ListNode* head, int left, int right) {
+        // write down some boundr condition and you will get your answer
         ListNode *temp=head;
         ListNode *second=NULL;
         ListNode *third=NULL;
