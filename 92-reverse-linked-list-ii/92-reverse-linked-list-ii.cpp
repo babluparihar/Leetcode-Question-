@@ -13,46 +13,124 @@ public:
     ListNode *reverse(ListNode *root)
     {
         ListNode *p=root,*q=NULL,*r=NULL;
-        while(p)
+        while(p!=NULL)
         {
-            r=q;q=p;p=p->next;
+            r=q;
+            q=p;
+            p=p->next;
             q->next=r;
         }
         return q;
     }
+    int list_len(ListNode *head)
+    {
+        int len=0;
+        while(head!=NULL)
+        {
+            len++;
+            head=head->next;
+        }
+        return len;
+    }
     ListNode* reverseBetween(ListNode* head, int left, int right) {
-        ListNode *L=head,*R=head;
-        bool flag=true;
-        ListNode *LP=NULL;
-        for(int i=1;R!=NULL && i<=right-1;i++)
+        ListNode *temp=head;
+        ListNode *second=NULL;
+        ListNode *third=NULL;
+        ListNode *first=head;
+        int len=list_len(head);
+        if(left==right)
         {
-             if(flag==true)
-             {
-                 if(i==left)
-                 {
-                     flag=false;
-                 }
-                 else
-                 {
-                     LP=L;
-                     L=L->next;
-                 }
-             }
-            R=R->next;
+            return head;
         }
-        ListNode *LL=L;
-        ListNode *RN=R->next;
-        R->next=NULL;
-        L=reverse(L);
-        if(LP!=NULL)
+        if(left==1 and right!=len)
         {
-            LP->next=L;
+            ListNode *t=head;
+            ListNode *f=head;
+            right--;
+            while(right--)
+            {
+                t=t->next;
+            }
+            ListNode *add=t->next;
+            t->next=NULL;
+            f=reverse(f);
+            ListNode *ans=f;
+            while(f->next!=NULL)
+            {
+                f=f->next;
+            }
+            f->next=add;
+            return ans;
         }
-        LL->next=RN;
-        if(LP==NULL)
+        if(right==len)
         {
-            return L;
+            if(left==1 and right==len)
+            {
+                head=reverse(head);
+                return head;
+            }
+            else
+            {
+                ListNode *f=head;
+                ListNode *t=NULL;
+                for(int i=1;i<=left;i++)
+                {
+                    if(i<left)
+                    {
+                        t=head;
+                    }
+                    else
+                    {
+                        t->next=NULL;
+                        break;
+                    }
+                    head=head->next;
+                }
+                head=reverse(head);
+                t->next=head;
+                return f;
+            }
         }
-        return head;
+        for(int i=1;head!=NULL and i<=right;i++)
+        {
+            if(i<left)
+            {
+                temp=head;
+            }
+            else if(i==left)
+            {
+                temp->next=NULL;
+                second=head;
+            }
+            else if (i==right)
+            {
+                if(head->next!=NULL)
+                {
+                    third=head->next;
+                    head->next=NULL;
+                }
+                else
+                {
+                    third=NULL;
+                }
+                break;
+            }
+            head=head->next;
+        }
+        if(second==NULL)
+        {
+            return first;
+        }
+        second=reverse(second);
+        temp->next=second;
+        while(second!=NULL and second->next!=NULL)
+        {
+            second=second->next;
+        }
+        if(third!=NULL)
+        {    
+        second->next=third;
+        }
+        return first;
     }
 };
